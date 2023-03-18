@@ -5,12 +5,13 @@ Prompt engineering(提示工程)是一门相对较新的学科，旨在开发和
 本指南介绍了标准提示的基础知识，以提供如何使用提示与大型语言模型 (LLMs) 进行交互和指导的大致思路。
 
 除非另有说明，所有示例均使用 text-davinci-003 (在 OpenAI 的 playground 上使用)，使用默认配置，例如 temperature=0.7 和 top-p=1。
+
 提纲:
-- [基本提示 Basic Prompts](#basic-prompts)
-- [关于LLM设置的一些说明 A Word on LLM Settings](#a-word-on-llm-settings)
-- [标准提示 Standard Prompts](#standard-prompts)
-- [提示的元素 Elements of a Prompt](#elements-of-a-prompt)
-- [设计提示的一些技巧 General Tips for Designing Prompts](#general-tips-for-designing-prompts)
+- [基本提示 Basic Prompts](#基本提示basic-prompts)
+- [关于LLM设置的一些说明 A Word on LLM Settings](#关于LLM设置的一些说明a-word-on-llm-settings)
+- [标准提示 Standard Prompts](#标准提示standard-prompts)
+- [提示的元素 Elements of a Prompt](#提示的元素elements-of-a-prompt)
+- [设计提示的一些技巧 General Tips for Designing Prompts](#设计提示的一些技巧general-tips-for-designing-prompts)
 
 ---
 
