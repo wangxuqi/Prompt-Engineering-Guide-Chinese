@@ -1,73 +1,72 @@
-# Prompt Applications
+# Prompt 应用
+在这个指南中，我们将介绍一些高级和有趣的方式，通过 prompt engineering 来执行有用的更高级别的任务。
 
-In this guide, we will cover some advanced and interesting ways we can use prompt engineering to perform useful and more advanced tasks. 
 
-**Note that this section is under heavy development.**
-Topics:
-- [Generating Data](#generating-data)
-- [Program-Aided Language Models](#pal-program-aided-language-models)
-- [Python Notebooks](#python-notebooks)
+**请注意，本节正在积极开发中。**
+主题:
+- [生成数据](#生成数据)
+- [程序辅助语言模型](#程序辅助语言模型)
+- [Python笔记本](#Python笔记本)
 
 
 ---
-## Generating Data
-LLMs have strong capabilities to generate text. Using effective prompt strategies can steer the model to produce better, more consistent, and more factual responses. LLMs can also be especially useful for generating data which is useful to run all sorts of experiments. For example, we can use it to generate quick samples for a sentiment classifier like so:
+## 生成数据
+LLMs具有生成文本的强大能力。使用有效的提示策略可以引导模型产生更好、更一致、更真实的响应。LLMs也可以特别有用于生成数据，这对于运行各种实验非常有用。例如，我们可以使用它来生成情感分类器的快速样本，如下所示：
 
 *Prompt:*
 ```
-Produce 10 exemplars for sentiment analysis. Examples are categorized as either positive or negative. Produce 2 negative examples and 8 positive examples. Use this format for the examples:
-Q: <sentence>
-A: <sentiment>
+生成10个情感分析的例子。这些例子被分类为正面或负面。生成2个负面例子和8个正面例子。使用以下格式的例子：
+问题: <句子>
+答案: <情感>
 ```
 
 *Output:*
 ```
-Q: I just got the best news ever!
-A: Positive
+问题: 我刚刚得到了最好的消息！
+答案: 正面
 
-Q: We just got a raise at work!
-A: Positive
+问题: 我们刚刚在工作中得到了加薪！
+答案: 正面
 
-Q: I'm so proud of what I accomplished today.
-A: Positive
+问题: 我为今天取得的成就感到非常自豪。
+答案: 正面
 
-Q: I'm having the best day ever!
-A: Positive
+问题: 我今天过得非常开心！
+答案: 正面
 
-Q: I'm really looking forward to the weekend.
-A: Positive
+问题: 我真的很期待周末。
+答案: 正面
 
-Q: I just got the best present ever!
-A: Positive
+问题: 我刚刚得到了最好的礼物！
+答案: 正面
 
-Q: I'm so happy right now.
-A: Positive
+问题: 我现在感到非常高兴。
+答案: 正面
 
-Q: I'm so blessed to have such an amazing family.
-A: Positive
+问题: 我很幸运有这么棒的家人。
+答案: 正面
 
-Q: The weather outside is so gloomy.
-A: Negative
+问题: 外面的天气非常阴暗。
+答案: 负面
 
-Q: I just got some terrible news.
-A: Negative
+问题: 我刚刚得到了一些可怕的消息。
+答案: 负面
 ```
 
-This is very useful. We use this example for a different test in another section of the guides.
+这非常有用。我们在指南的另一部分中将使用此示例进行不同的测试。
 
 ---
 
-## PAL (Program-Aided Language Models)
+## 程序辅助语言模型
  
-[Gao et al., (2022)](https://arxiv.org/abs/2211.10435) presents a method that uses LLMs to read natural language problems and generate programs as the intermediate reasoning steps. Coined, program-aided language models (PAL), differ from chain-of-thought prompting in that instead of using free-form text to obtain a solution it offloads the solution step to a programmatic runtime such as a Python interpreter.
-
+[Gao et al., (2022)](https://arxiv.org/abs/2211.10435)提出了一种方法，使用LLMs来读取自然语言问题并生成程序作为中间推理步骤。称为程序辅助语言模型（PAL），与思维链提示不同，它不是使用自由形式的文本来获取解决方案，而是将解决步骤卸载到编程运行时，例如Python解释器。
 ![](../img/pal.png)
 
-Let's look at an example using LangChain and OpenAI GPT-3. We are interested to develop a simple application that's able to interpret the question being asked and provide an answer by leveraging the Python interpreter. 
+让我们通过LangChain和OpenAI GPT-3来看一个例子。我们有兴趣开发一个简单的应用程序，它能够解释所提出的问题并通过利用Python解释器提供答案。
 
-Specifically, we are interested to create a function that allows the use of the LLM to answer questions that require date understanding. We will provide the LLM a prompt that includes a few exemplars that are adopted from [here](https://github.com/reasoning-machines/pal/blob/main/pal/prompt/date_understanding_prompt.py).  
+具体来说，我们有兴趣创建一个函数，使得可以使用LLM回答需要日期理解的问题。我们将向LLM提供一个提示，其中包括一些示例，这些示例来自[这里](https://github.com/reasoning-machines/pal/blob/main/pal/prompt/date_understanding_prompt.py)。
 
-These are the imports we need:
+这些是我们需要的导入：
 
 ```python
 import openai
@@ -78,7 +77,7 @@ from langchain.llms import OpenAI
 from dotenv import load_dotenv
 ```
 
-Let's first configure a few things:
+我们进行一些少量的配置:
 
 ```python
 load_dotenv()
@@ -90,13 +89,13 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 ```
 
-Setup model instance:
+设置模型
 
 ```python
 llm = OpenAI(model_name='text-davinci-003', temperature=0)
 ```
 
-Setup prompt + question:
+设置prompt + question:
 
 ```python
 question = "Today is 27 February 2023. I was born exactly 25 years ago. What is the date I was born in MM/DD/YYYY?"
@@ -156,10 +155,10 @@ exec(llm_out)
 print(born)
 ```
 
-This will output the following: `02/27/1998`
+这个程序将输出: `02/27/1998`
 
 ---
-## Python Notebooks
+## Python笔记本
 
 |Description|Notebook|
 |--|--|
@@ -167,8 +166,8 @@ This will output the following: `02/27/1998`
 
 ---
 
-More examples coming soon!
+更多示例即将推出！
 
-[Previous Section (Advanced Prompting)](./prompts-advanced-usage.md)
+[上一节（高阶promting）](./prompts-advanced-usage.md)
 
-[Next Section (ChatGPT)](./prompts-chatgpt.md)
+[下一节（ChatGPT）](./prompts-chatgpt.md)
