@@ -5,16 +5,16 @@
 
 Topics:
 
-- [零样本 Prompting](#zero-shot-prompting)
-- [少样本 Prompting](#few-shot-prompting)
-- [思维链Prompting](#chain-of-thought-prompting)
-- [零样本思维链](#zero-shot-cot)
-- [自一致性](#self-consistency)
-- [生成知识Prompting](#generated-knowledge-prompting)
-- [自动Prompt工程师](#automatic-prompt-engineer-ape)
+- [零样本 Prompting](#零样本 Prompting)
+- [少样本 Prompting](#少样本 Prompting)
+- [思维链Chain-of-Thought Prompting](#思维链Chain-of-Thought Prompting)
+- [零样本思维链zero-shot-cot](#零样本思维链zero-shot-cot)
+- [自洽性 Self-Consistency](#自洽性 Self-Consistency)
+- [生成知识 Prompting](#生成知识 Prompting)
+- [自动提示工程师 Automatic Prompt Engineer](#自动提示工程师 Automatic Prompt Engineer)
 
 ---
-## 零样本Prompting
+## 零样本 Prompting
 目前，通过大量数据训练并根据指示进行调整的LLM能够在零样本情况下执行任务。
 我们在前面的章节中尝试了一些零样本的例子。这是我们使用过的其中一个例子：
 
@@ -35,7 +35,7 @@ Neutral
 下面我们将讨论少样本Prompting这种方法。
 
 ---
-## 少样本Prompting
+## 少样本 Prompting
 
 尽管大型语言模型已经展示出了非凡的零样本能力，但在使用零样本设置时，它们在更复杂的任务上仍然表现不足。为了改进这一点，少样本Prompting被用作一种技术，以实现上下文学习，即在提示中提供演示以引导模型取得更好的表现。这些演示作为后续例子的条件，我们希望模型能够生成一个响应。
 
@@ -153,7 +153,7 @@ The answer is True.
 
 ---
 
-## 思维链(Chain-of-Thought) Prompting
+## 思维链Chain-of-Thought Prompting
 
 在[Wei et al. (2022)](https://arxiv.org/abs/2201.11903)等人的论文中引入的Chain-of-Thought（CoT）prompting，通过中间推理步骤实现复杂的推理能力。
 您可以将其与few-shot prompting结合使用，以获得更好的结果，用于需要在回答之前进行推理的更复杂任务。
@@ -201,9 +201,9 @@ Adding all the odd numbers (15, 5, 13, 7, 1) gives 41. The answer is False.
 
 ---
 
-## 零样本共识树(Zero-Shot CoT)
+## 零样本思维链zero-shot-cot
 
-最近提出的一个想法是“零样本共识树”（Zero-Shot CoT） [zero-shot CoT](https://arxiv.org/abs/2205.11916) (Kojima et al. 2022)。它的基本思想是在原始提示中添加“一步一步地思考”。让我们尝试一个简单的问题，并看看这个模型的表现：
+最近提出的一个想法是“零样本思维链”（Zero-Shot CoT） [zero-shot CoT](https://arxiv.org/abs/2205.11916) (Kojima et al. 2022)。它的基本思想是在原始提示中添加“一步一步地思考”。让我们尝试一个简单的问题，并看看这个模型的表现：
 
 *Prompt:*
 ```
@@ -236,7 +236,7 @@ Finally, you ate 1 apple, so you would remain with 10 apples.
 
 ---
 
-## 自洽性(Self-Consistency)
+## 自洽性 Self-Consistency
 
 也许目前用于提示工程的更高级的技术之一是Self-Consistency。由 [Wang et al. (2022)](https://arxiv.org/pdf/2203.11171.pdf)等人提出，Self-Consistency的目标是“替代链式思维提示中使用的朴素贪婪解码方法”。其思想是通过few-shot CoT采样多个不同的推理路径，并使用生成的结果选择最一致的答案。这有助于提高CoT提示在涉及算术和常识推理的任务中的性能。
 
@@ -315,7 +315,7 @@ When I was 6 my sister was half my age, so she was 3. Now I am 70, so she is 70/
 将最终答案计算出来需要几个步骤（详见论文），但为简单起见，我们可以看到已经出现了绝大多数的答案，因此这实质上将成为最终答案。
 
 ---
-## 生成的知识(Generated Knowledge) Prompting
+## 生成知识 Prompting
 
 LLM（大型语言模型）不断得到改进，其中一种流行的技术是能够整合知识或信息来帮助模型进行更准确的预测。
 
@@ -404,7 +404,7 @@ Yes, part of golf is trying to get a higher point total than others. Each player
 请查阅论文以获取更多信息。
 ---
 
-## 自动提示工程师 Automatic Prompt Engineer (APE)
+## 自动提示工程师 Automatic Prompt Engineer
 
 ![](../img/APE.png)
 
