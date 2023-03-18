@@ -7,15 +7,15 @@ Prompt engineering(提示工程)是一门相对较新的学科，旨在开发和
 除非另有说明，所有示例均使用 text-davinci-003 (在 OpenAI 的 playground 上使用)，使用默认配置，例如 temperature=0.7 和 top-p=1。
 
 提纲:
-- [基本提示 Basic Prompts](#基本提示basic-prompts)
-- [关于LLM设置的一些说明 A Word on LLM Settings](#关于LLM设置的一些说明a-word-on-llm-settings)
-- [标准提示 Standard Prompts](#标准提示standard-prompts)
-- [提示的元素 Elements of a Prompt](#提示的元素elements-of-a-prompt)
-- [设计提示的一些技巧 General Tips for Designing Prompts](#设计提示的一些技巧general-tips-for-designing-prompts)
+- [基本提示](#基本提示)
+- [关于LLM设置的一些说明](#关于LLM设置的一些说明)
+- [标准提示](#标准提示)
+- [提示的元素](#提示的元素)
+- [设计提示的一些技巧](#设计提示的一些技巧)
 
 ---
 
-## 基本提示 Basic Prompts
+## 基本提示
 
 使用提示已经可以实现很多功能，但结果的质量取决于您提供的信息量。提示可以包含诸如您传递给模型的“指令”或“问题”以及其他详细信息，例如“输入”或“示例”。
 
@@ -57,7 +57,7 @@ The sky is
 上面的例子是现今LLMs能够实现的基本演示。如今的LLMs能够执行各种先进任务，从文本摘要到数学推理再到代码生成。
 
 ---
-## 关于LLM设置的一些说明 A Word on LLM Settings
+## 关于LLM设置的一些说明
 
 在使用提示时，您将通过API或直接与LLM进行交互。您可以配置一些参数来获取不同的提示结果。
 
@@ -69,7 +69,7 @@ The sky is
 在开始一些基本示例之前，请记住您的结果可能因您使用的LLM版本而异。
 
 ---
-## 标准提示 Standard Prompts
+## 标准提示
 
 我们上面尝试了一个非常简单的提示。标准提示具有以下格式：
 
@@ -136,7 +136,7 @@ Few-shot prompts可以实现上下文学习，即语言模型仅仅通过少量�
 
 ---
 
-## 提示的元素 Elements of a Prompt
+## 提示的元素
 
 随着我们涵盖越来越多的提示工程的实例和应用，您会发现提示由以下特定元素组成：
 
@@ -151,7 +151,7 @@ Few-shot prompts可以实现上下文学习，即语言模型仅仅通过少量�
 并不是所有的组件都是提示所必需的，格式取决于手头的任务。我们将在即将发布的指南中提供更多具体的例子。
 
 ---
-## 设计提示的一些技巧 General Tips for Designing Prompts
+## 设计提示的一些技巧
 
 以下是设计提示时需要记住的一些技巧：
 
