@@ -4,10 +4,10 @@
 **请注意，本节正在进行大量开发。**
 
 Topic:
-- [主动Prompt](#active-prompt)
-- [定向刺激Prompt](#directional-stimulus-prompting)
+- [主动Prompt](#主动Prompt)
+- [定向刺激Prompt](#定向刺激Prompt)
 - [ReAct](#react)
-- [多模态CoTPrompt](#multimodal-prompting)
+- [多模态CoTPrompt](#[多模态CoTPrompt)
 - [GraphPrompts](#graphprompts)
 - ...
 
